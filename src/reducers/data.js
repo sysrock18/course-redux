@@ -1,25 +1,18 @@
-function data(state, action) {
-  switch(action.type) {
-    case 'SEARCH_VIDEO':{
-      let results = []
-      
-      if (action.payload.query) {
-        state.data.categories.map(category => {
-          results = results.concat(
-            category.playlist.filter(
-              item => {
-                return item.author.toLowerCase().includes(action.payload.query.toLowerCase()) ||
-                  item.title.toLowerCase().includes(action.payload.query.toLowerCase())
-              }
-            )
-          )
-        })
-      }
+import initialData from '../schemas'
+import { fromJS } from 'immutable'
 
-      return {
-        ...state,
-        search: results
-      }
+
+const initialState = fromJS({
+  entities: initialData.entities,
+  categories: initialData.result.categories,
+  search: '',
+})
+
+
+function data(state = initialState, action) {
+  switch(action.type) {
+    case 'SEARCH_ENTITIES':{
+      return state.set('search', action.payload.query)
     }
     default:
       return state
