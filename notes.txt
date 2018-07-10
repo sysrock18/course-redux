@@ -1,0 +1,20 @@
+Map Dispatch to props
+---------------------
+
+existe un shorthand donde no es necesario importar bindAnctionCreators, consiste en que mapDispatchToProps sea un objeto en vez de una funcion y recibe las acciones como propiedades asi podran ser usadas directamente en los props del componente.
+
+import { openModal, closeModal } from'.../../actions/index';
+const mapDispatchToProps = {
+  openModal,
+  closeModal,
+}
+
+Middlewares
+-----------
+
+Es una forma de poder interceptar lo que está sucediendo con (redux) para mejorarlo y/o modificarlo.
+
+Componentes del Middleware
+
+Recibe el dispatch y el getState como argumentos y retorna una función.
+Esta función recibe el método para despachar el siguiente middleware; se espera que retorne una función que recibe action y llame a next(action)
