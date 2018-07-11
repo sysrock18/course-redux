@@ -1,5 +1,5 @@
 import { fromJS } from 'immutable'
-import {OPEN_MODAL, CLOSE_MODAL} from '../action-types'
+import { OPEN_MODAL, CLOSE_MODAL } from '../action-types'
 
 const initialState = fromJS({
   visibility: false,
