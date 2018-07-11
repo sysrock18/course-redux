@@ -18,3 +18,11 @@ Componentes del Middleware
 
 Recibe el dispatch y el getState como argumentos y retorna una función.
 Esta función recibe el método para despachar el siguiente middleware; se espera que retorne una función que recibe action y llame a next(action)
+
+Acciones asincronas
+-------------------
+
+Hay dos formas de hacer acciones asincronas en react con redux, uno con promesas y otro con el plugin redux-thunk un middleware para manejar acciones asincronas
+
+
+

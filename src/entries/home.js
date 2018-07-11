@@ -9,6 +9,7 @@ import data from '../schemas'
 import { Map as map } from 'immutable'
 import logger from 'redux-logger'
 import { composeWithDevTools } from 'redux-devtools-extension'
+import thunk from 'redux-thunk'
 
 
 function myLogger({getState, dispatch}) {
@@ -32,7 +33,8 @@ const store = createStore(
   composeWithDevTools(
     applyMiddleware(
       logger,
-      myLogger
+      myLogger,
+      thunk
     )
   )
 )
