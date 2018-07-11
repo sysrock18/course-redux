@@ -7,8 +7,11 @@ import { Provider } from 'react-redux'
 import reducer from '../reducers'
 import data from '../schemas'
 import { Map as map } from 'immutable'
+import logger from 'redux-logger'
+import { composeWithDevTools } from 'redux-devtools-extension'
 
-function logger({getState, dispatch}) {
+
+function myLogger({getState, dispatch}) {
 	// method for dispatch the next middleware
 	return (next) => {
 		return (action) => {
@@ -25,7 +28,13 @@ const store = createStore(
   reducer,
   map(),
   // window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
-  applyMiddleware(logger)
+  // applyMiddleware(myLogger)
+  composeWithDevTools(
+    applyMiddleware(
+      logger,
+      myLogger
+    )
+  )
 )
 
 
